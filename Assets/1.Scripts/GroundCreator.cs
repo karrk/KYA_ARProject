@@ -16,6 +16,8 @@ public class GroundCreator : MonoBehaviour
     [SerializeField] private ARSession _arSession;
     [SerializeField] private ARPlaneManager _arPlaner;
 
+    [SerializeField] private Transform _areas;
+
     private Ray _ray;
     private RaycastHit _hit;
 
@@ -35,6 +37,16 @@ public class GroundCreator : MonoBehaviour
 
         _setBtn.SetActive(true);
         _btnContainer.SetActive(false);
+
+        RegistGroundPoses();
+    }
+
+    private void RegistGroundPoses()
+    {
+        for (int i = 0; i < (int)E_GroundPos.Size; i++)
+        {
+            Manager.Instance.Data.GroundPoese[i] = _areas.GetChild(i).position;
+        }
     }
 
     private void InitGround()
@@ -78,7 +90,7 @@ public class GroundCreator : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Camera.main.transform.localEulerAngles);
+        //Debug.Log(Camera.main.transform.localEulerAngles);
 
         if (!_fixedPos)
         {

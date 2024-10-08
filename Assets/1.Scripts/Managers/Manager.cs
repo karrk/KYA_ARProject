@@ -16,7 +16,7 @@ public class Manager : MonoBehaviour
         { Destroy(this.gameObject); }
     }
 
-    private DataManager _data = null;
+    [SerializeField] private DataManager _data = null;
     public DataManager Data
     {
         get
