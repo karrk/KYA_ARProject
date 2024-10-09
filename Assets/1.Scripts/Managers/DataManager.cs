@@ -19,7 +19,7 @@ public class DataManager
 
     public void SetPlayer(PlayerController m_player)
     {
-        if (this._player != null)
+        if (this._player != null && m_player != null)
         {
             GameObject.Destroy(m_player.gameObject);
             Debug.LogError("플레이어가 이미 존재");

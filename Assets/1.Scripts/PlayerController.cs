@@ -31,5 +31,22 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = _moveDir * _moveSpeed * m_rate;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("DeadZone"))
+        {
+            Dead();
+        }
+    }
+
+    private void Dead()
+    {
+        Manager.Instance.Data.SetPlayer(null);
+        Manager.Instance.UI.ShowMain();
+        Manager.Instance.Data.SetPlayMode(false);
+
+        Destroy(this.gameObject);
+    }
+
 
 }

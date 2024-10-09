@@ -36,6 +36,11 @@ public class UIManager
         _setGroundBtn.gameObject.SetActive(true);
     }
 
+    public void ShowMain()
+    {
+        _BtnContainer.SetActive(true);
+    }
+
     private void SetGroundBtnAction()
     {
         _setGroundBtn.gameObject.SetActive(false);
