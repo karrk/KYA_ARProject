@@ -21,10 +21,6 @@ public class GroundCreator : MonoBehaviour
     private Ray _ray;
     private RaycastHit _hit;
 
-    [SerializeField] private GameObject _setBtn;
-    [SerializeField] private GameObject _btnContainer;
-    [SerializeField] private GameObject _acceptBtn;
-
     private float _lastXValue = float.MinValue;
     private float _curXValue;
 
@@ -34,11 +30,17 @@ public class GroundCreator : MonoBehaviour
     private void Start()
     {
         InitGround();
-
-        _setBtn.SetActive(true);
-        _btnContainer.SetActive(false);
-
         RegistGroundPoses();
+
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._setGroundBtn, SetPos);
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._ResetGroundBtn, ResetPos);
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._SetHeightBtn, SetHeight);
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._SetRotationBtn, SetRotation);
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._AcceptBtn, () => {
+            _setHeightMode = false;
+            _setRotationMode = false;
+            _aim.transform.position = _ground.transform.position;
+        });
     }
 
     private void RegistGroundPoses()
@@ -51,8 +53,8 @@ public class GroundCreator : MonoBehaviour
 
     private void InitGround()
     {
-        _ground.transform.localScale = Manager.Instance.Data.GroundSize;
-        _aim.transform.localScale = Manager.Instance.Data.GroundSize * 0.1f;
+        _ground.transform.localScale = Vector3.one * Manager.Instance.Data.GroundSize;
+        _aim.transform.localScale = Vector3.one * Manager.Instance.Data.GroundSize * 0.1f;
 
         _ground.SetActive(false);
         _aim.SetActive(true);
@@ -65,8 +67,6 @@ public class GroundCreator : MonoBehaviour
         _ground.transform.up = _aim.transform.up;
         _aim.SetActive(false);
         _ground.SetActive(true);
-        _setBtn.SetActive(false);
-        _btnContainer.SetActive(true);
 
         _arPlaner.requestedDetectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.None;
 
@@ -78,9 +78,6 @@ public class GroundCreator : MonoBehaviour
         RemoveDectectPlanes();
 
         _arPlaner.requestedDetectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
-
-        _btnContainer.SetActive(false);
-        _setBtn.SetActive(true);
 
         _fixedPos = false;
         _aim.SetActive(true);
@@ -145,8 +142,6 @@ public class GroundCreator : MonoBehaviour
         _lastXValue = Camera.main.transform.localEulerAngles.x;
 
         _setHeightMode = true;
-        _btnContainer.SetActive(false);
-        _acceptBtn.SetActive(true);
     }
 
     public void SetRotation()
@@ -154,17 +149,5 @@ public class GroundCreator : MonoBehaviour
         _lastYValue = Camera.main.transform.localEulerAngles.y;
 
         _setRotationMode = true;
-        _btnContainer.SetActive(false);
-        _acceptBtn.SetActive(true);
-    }
-
-    public void AcceptFunction()
-    {
-        _acceptBtn.SetActive(false);
-        _setHeightMode = false;
-        _setRotationMode = false;
-        _aim.transform.position = _ground.transform.position;
-
-        _btnContainer.SetActive(true);
     }
 }

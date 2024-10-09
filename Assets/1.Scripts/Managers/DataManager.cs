@@ -5,7 +5,7 @@ public class DataManager
 {
     [SerializeField] private Transform PlayerSpawnPos;
 
-    public Vector3 GroundSize = new Vector3(0.5f,0.5f,0.5f);
+    public float GroundSize = 0.3f;
 
     public Vector3 GroundPos;
 

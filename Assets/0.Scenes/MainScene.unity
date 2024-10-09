@@ -602,19 +602,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 207147543}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 913000012}
-        m_TargetAssemblyTypeName: GroundCreator, Assembly-CSharp
-        m_MethodName: SetRotation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &207147543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,10 +671,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  JoyStick: {fileID: 0}
+  _joyStick: {fileID: 0}
   _data:
     PlayerSpawnPos: {fileID: 28270417}
-    GroundSize: {x: 0.5, y: 0.5, z: 0.5}
+    GroundSize: 0.3
     GroundPos: {x: 0, y: 0, z: 0}
     GroundPoese:
     - {x: 0, y: 0, z: 0}
@@ -698,6 +686,14 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
+  _ui:
+    _setGroundBtn: {fileID: 811770572}
+    _BtnContainer: {fileID: 1325664959}
+    _AcceptBtn: {fileID: 773190231}
+    _ResetGroundBtn: {fileID: 1826947032}
+    _GameStartBtn: {fileID: 2134317687}
+    _SetHeightBtn: {fileID: 871263448}
+    _SetRotationBtn: {fileID: 207147542}
 --- !u!4 &224243048
 Transform:
   m_ObjectHideFlags: 0
@@ -1190,19 +1186,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 773190232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 913000012}
-        m_TargetAssemblyTypeName: GroundCreator, Assembly-CSharp
-        m_MethodName: AcceptFunction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &773190232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,19 +1391,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 811770573}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 913000012}
-        m_TargetAssemblyTypeName: GroundCreator, Assembly-CSharp
-        m_MethodName: SetPos
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &811770573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,19 +1781,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 871263449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 913000012}
-        m_TargetAssemblyTypeName: GroundCreator, Assembly-CSharp
-        m_MethodName: SetHeight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &871263449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1948,9 +1908,6 @@ MonoBehaviour:
   _arSession: {fileID: 154236089}
   _arPlaner: {fileID: 174961043}
   _areas: {fileID: 1106358764}
-  _setBtn: {fileID: 811770570}
-  _btnContainer: {fileID: 1325664959}
-  _acceptBtn: {fileID: 773190229}
 --- !u!1 &1071809147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,19 +3025,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1826947033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 913000012}
-        m_TargetAssemblyTypeName: GroundCreator, Assembly-CSharp
-        m_MethodName: ResetPos
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1826947033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3550,43 +3495,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2134317688}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 28270418}
-        m_TargetAssemblyTypeName: PlayerSpawner, Assembly-CSharp
-        m_MethodName: SpawnPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 224243047}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
-        m_MethodName: SetPlayMode
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1325664959}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2134317688
 MonoBehaviour:
   m_ObjectHideFlags: 0

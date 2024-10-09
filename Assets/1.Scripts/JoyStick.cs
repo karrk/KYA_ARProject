@@ -20,7 +20,7 @@ public class JoyStick : MonoBehaviour
 
     private void Start()
     {
-        Manager.Instance.JoyStick = this;
+        Manager.Instance.SetJoyStick(this);
         SetLimitRange();
     }
 
