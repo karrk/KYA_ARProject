@@ -90,8 +90,6 @@ public class GroundCreator : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(Camera.main.transform.localEulerAngles);
-
         if (!_fixedPos)
         {
             _ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -116,8 +114,6 @@ public class GroundCreator : MonoBehaviour
             _curXValue = Camera.main.transform.localEulerAngles.x;
 
             float delta = _lastXValue - _curXValue;
-
-            //Debug.Log($"{_lastXValue} : {_curXValue} = {delta}");
 
             _ground.transform.position =
                 new Vector3(_ground.transform.position.x,

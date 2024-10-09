@@ -9,7 +9,7 @@ public class PlayerSpawner : MonoBehaviour
     public void SpawnPlayer()
     {
         GameObject player = Instantiate(_playerPrefab);
-
+        player.transform.position = transform.position;
         player.transform.SetParent(null);
     }
 }
