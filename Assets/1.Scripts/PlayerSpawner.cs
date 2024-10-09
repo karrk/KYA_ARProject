@@ -6,7 +6,12 @@ public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _playerPrefab;
 
-    public void SpawnPlayer()
+    private void Start()
+    {
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._GameStartBtn, SpawnPlayer);
+    }
+
+    private void SpawnPlayer()
     {
         GameObject player = Instantiate(_playerPrefab);
         player.transform.position = transform.position;
