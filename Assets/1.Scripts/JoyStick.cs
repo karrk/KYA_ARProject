@@ -16,11 +16,12 @@ public class JoyStick : MonoBehaviour
     private readonly float MaxDelta = 5f;
 
     private float _minDistRate = 0.2f;
-    public Action<Vector2,float> OnInputed;
+    //public Action<Vector2,float> OnInputed;
+
+    private PlayerController _playedCharacter => Manager.Instance.Data.Player;
 
     private void Start()
     {
-        Manager.Instance.SetJoyStick(this);
         SetLimitRange();
     }
 
@@ -31,7 +32,7 @@ public class JoyStick : MonoBehaviour
 
     private void Update()
     {
-        if (Manager.Instance.PlayMode == false)
+        if (Manager.Instance.Data.PlayMode == false)
             return;
 
         if(Input.touchCount >= 1)
@@ -60,9 +61,12 @@ public class JoyStick : MonoBehaviour
 
                 float distRate = Mathf.Clamp(tempPos.magnitude / _limitControllRange, _minDistRate, 1);
 
-                OnInputed?.Invoke(tempPos.normalized, distRate);
+                //OnInputed?.Invoke(tempPos.normalized, distRate);
 
-                //Debug.Log(distRate);
+                if(_playedCharacter != null)
+                {
+                    _playedCharacter.Move(tempPos.normalized, distRate);
+                }
 
             }
             else if(touch.phase == TouchPhase.Ended)

@@ -51,7 +51,7 @@ public class UIManager
     private void GameStartBtnAction()
     {
         _BtnContainer.SetActive(false);
-        Manager.Instance.SetPlayMode(true);
+        Manager.Instance.Data.SetPlayMode(true);
         // 캐릭터 스폰
     }
 

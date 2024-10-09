@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _cam = Camera.main.transform;
-        Manager.Instance.SetPlayer(this);
+        Manager.Instance.Data.SetPlayer(this);
     }
 
     public void Move(Vector2 m_dir,float m_rate)
