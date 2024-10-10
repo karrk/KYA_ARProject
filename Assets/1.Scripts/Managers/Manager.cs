@@ -16,6 +16,7 @@ public class Manager : MonoBehaviour
         { Destroy(this.gameObject); }
 
         UI.Init();
+        Pool.Init();
     }
 
     [SerializeField] private DataManager _data = null;
@@ -42,7 +43,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    [SerializeField] private VFXManager _vfx = null;
+    private VFXManager _vfx = null;
     public VFXManager VFX
     {
         get
@@ -52,6 +53,37 @@ public class Manager : MonoBehaviour
 
             return _vfx;
         }
+    }
+
+    [SerializeField] private ObjectPoolManager _pool = null;
+    public ObjectPoolManager Pool
+    {
+        get
+        {
+            if (_pool == null)
+                _pool = new ObjectPoolManager();
+
+            return _pool;
+        }
+    }
+
+    [SerializeField] private MeteoSpawner _meteoSpawner;
+
+    private float _meteoSpawnDelay = 3f;
+    private float _timer;
+
+    private void Update()
+    {
+        if (!Data.PlayMode)
+            return;
+
+        _timer += Time.deltaTime;
+
+        if(_timer >= _meteoSpawnDelay)
+        {
+            _meteoSpawner.Spawn();
+            _timer = 0;
+        }    
     }
 
     public void EndGame()

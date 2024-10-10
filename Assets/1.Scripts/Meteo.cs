@@ -20,11 +20,18 @@ public class Meteo : MonoBehaviour
 
     private Vector3 _dir;
     private float _moveSpeed;
-    Vector3 _targetPos;
+    private Vector3 _targetPos;
 
-    private void Start()
+    private ReturnObject _ret;
+
+    private void Awake()
     {
+        _ret = transform.AddComponent<ReturnObject>();
         _modelTr = transform.GetChild(0);
+    }
+
+    private void OnEnable()
+    {
         _rot = new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
         _rotateAngle = Random.Range(MinRotSpeed, MaxRotSpeed);
         _moveSpeed = Random.Range(MinMoveSpeed, MaxMoveSpeed);
@@ -89,10 +96,11 @@ public class Meteo : MonoBehaviour
             // Á×À½.
         }
 
-        Manager.Instance.VFX.PlayFX(transform.position);
+        Manager.Instance.VFX.PlayFX(E_PoolType.VFX_exp0, this.transform.position);
 
         StopCoroutine(_moveRoutine);
-        Destroy(this.gameObject);
+
+        Manager.Instance.Pool.ReturnObj(_ret.MyType, this.gameObject);
     }
 
 

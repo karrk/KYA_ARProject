@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3820660845772129318}
   - component: {fileID: 3820660845750470528}
   - component: {fileID: 3788140566515192214}
+  - component: {fileID: -783020466913702619}
   m_Layer: 0
   m_Name: ExplosionFireballFire
   m_TagString: Untagged
@@ -56,7 +57,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4943,6 +4944,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomPercent: 8
+--- !u!114 &-783020466913702619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3820660845752145524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365c09f6ac768c444a3185ed626f33e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3820660845752296172
 GameObject:
   m_ObjectHideFlags: 0

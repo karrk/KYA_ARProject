@@ -34,17 +34,11 @@ public class MeteoSpawner : MonoBehaviour
     {
         Vector3 spawnPos = GetRandomSpawnPos();
 
-        Meteo meteo = Instantiate(_prefabs[Random.Range(0, _prefabs.Count)]);
+        E_PoolType rand = (E_PoolType)Random.Range((int)E_PoolType.Rock0, (int)E_PoolType.Rock_Size);
+
+        Meteo meteo = Manager.Instance.Pool.GetObject(rand).GetComponent<Meteo>();
         meteo.SetDestination((E_GroundPos)Random.Range(0, (int)E_GroundPos.Size));
 
         meteo.transform.position = GetRandomSpawnPos();
     }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-            Spawn();
-    }
-
-
 }

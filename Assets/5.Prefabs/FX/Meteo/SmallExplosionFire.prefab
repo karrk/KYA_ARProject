@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7086516345239395657}
   - component: {fileID: 7086516345237450225}
   - component: {fileID: 5566566790041866084}
+  - component: {fileID: 887553706820579450}
   m_Layer: 0
   m_Name: SmallExplosionFire
   m_TagString: Untagged
@@ -55,7 +56,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4911,6 +4912,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &887553706820579450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086516345253272417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365c09f6ac768c444a3185ed626f33e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7086516345253296259
 GameObject:
   m_ObjectHideFlags: 0

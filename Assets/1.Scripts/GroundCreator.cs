@@ -30,7 +30,6 @@ public class GroundCreator : MonoBehaviour
     private void Start()
     {
         InitGround();
-        RegistGroundPoses();
 
         Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._setGroundBtn, SetPos);
         Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._ResetGroundBtn, ResetPos);
@@ -41,6 +40,8 @@ public class GroundCreator : MonoBehaviour
             _setRotationMode = false;
             _aim.transform.position = _ground.transform.position;
         });
+
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._GameStartBtn, RegistGroundPoses);
     }
 
     private void RegistGroundPoses()

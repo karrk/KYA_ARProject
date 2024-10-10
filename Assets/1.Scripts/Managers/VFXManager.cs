@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class VFXManager
 {
-    [SerializeField] private List<ParticleSystem> _expFXs;
-
-    public void PlayFX(Vector3 m_pos)
+    public void PlayFX(E_PoolType m_fxType, Vector3 m_pos)
     {
-        ParticleSystem particle = ParticleSystem.Instantiate(_expFXs[Random.Range(0, _expFXs.Count)]);
+        if (E_PoolType.VFX_exp0 > m_fxType || m_fxType >= E_PoolType.VFX_Exp_Size)
+            throw new System.Exception("¿Ã∆Â∆Æ ø¿∫Í¡ß∆Æ∞° æ∆¥‘");
+
+        ParticleSystem particle = Manager.Instance.Pool.GetObject(m_fxType).GetComponent<ParticleSystem>();
         particle.transform.position = m_pos;
+        particle.Play();
     }
+
+
 }

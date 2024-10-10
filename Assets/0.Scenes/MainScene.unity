@@ -699,6 +699,15 @@ MonoBehaviour:
     - {fileID: 5866853731309267230, guid: 0ce3f90d4a306424b9dd4b4166a9bbf2, type: 3}
     - {fileID: 7364504760251542298, guid: 847ed523117e33a4fafdadd36542454c, type: 3}
     - {fileID: 3820660845770426868, guid: af19ffe5390e9d1429da13389f753245, type: 3}
+  _pool:
+    _prefabs:
+      _keys: 04000000050000000600000007000000
+      _values:
+      - {fileID: 3820660845752145524, guid: af19ffe5390e9d1429da13389f753245, type: 3}
+      - {fileID: 7364504760232753826, guid: 847ed523117e33a4fafdadd36542454c, type: 3}
+      - {fileID: 5866853731293917760, guid: 0ce3f90d4a306424b9dd4b4166a9bbf2, type: 3}
+      - {fileID: 7086516345253272417, guid: 44d5a77500da62d41b360cc0e925ecab, type: 3}
+  _meteoSpawner: {fileID: 1678754340}
 --- !u!4 &224243048
 Transform:
   m_ObjectHideFlags: 0
@@ -3104,8 +3113,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678754335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.55, z: 15.08}
-  m_LocalScale: {x: 4, y: 1, z: 3}
+  m_LocalPosition: {x: 0, y: 8.08, z: 13.3}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1545317772}
@@ -3118,7 +3127,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678754335}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
