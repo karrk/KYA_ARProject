@@ -70,7 +70,11 @@ public class JoyStick : MonoBehaviour
             else if(touch.phase == TouchPhase.Ended)
             {
                 SetOffJoyStick();
-                _playedCharacter.StopMove();
+
+                if (_playedCharacter != null)
+                {
+                    _playedCharacter.StopMove(); 
+                }
             }
         }
     }
