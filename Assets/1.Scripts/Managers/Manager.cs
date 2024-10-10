@@ -42,7 +42,17 @@ public class Manager : MonoBehaviour
         }
     }
 
-    
+    [SerializeField] private VFXManager _vfx = null;
+    public VFXManager VFX
+    {
+        get
+        {
+            if (_vfx == null)
+                _vfx = new VFXManager();
+
+            return _vfx;
+        }
+    }
 
     public void EndGame()
     {
