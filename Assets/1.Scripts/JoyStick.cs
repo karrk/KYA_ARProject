@@ -61,8 +61,6 @@ public class JoyStick : MonoBehaviour
 
                 float distRate = Mathf.Clamp(tempPos.magnitude / _limitControllRange, _minDistRate, 1);
 
-                //OnInputed?.Invoke(tempPos.normalized, distRate);
-
                 if(_playedCharacter != null)
                 {
                     _playedCharacter.Move(tempPos.normalized, distRate);
@@ -72,6 +70,7 @@ public class JoyStick : MonoBehaviour
             else if(touch.phase == TouchPhase.Ended)
             {
                 SetOffJoyStick();
+                _playedCharacter.StopMove();
             }
         }
     }

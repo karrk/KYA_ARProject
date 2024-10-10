@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d217640e2736e41bd1bdaa960bebd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 8100173397720343654, guid: fb2065c396bef2f48a2039156495561e,
+  _playerPrefab: {fileID: 6250668187555209189, guid: bf3434db9d686b84585b04d10a15c32e,
     type: 3}
 --- !u!1 &48626517
 GameObject:
@@ -670,8 +670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76639e7a3ad6fa4a979095eee2ccec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _joyStick: {fileID: 0}
   _data:
     PlayerSpawnPos: {fileID: 28270417}
     GroundSize: 0.3
@@ -686,6 +684,7 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
     - {x: 0, y: 0, z: 0}
+    _player: {fileID: 0}
   _ui:
     _setGroundBtn: {fileID: 811770572}
     _BtnContainer: {fileID: 1325664959}
