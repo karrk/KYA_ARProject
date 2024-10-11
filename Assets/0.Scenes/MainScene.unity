@@ -4538,8 +4538,9 @@ GameObject:
   - component: {fileID: 425997840597851886}
   - component: {fileID: 425997840598850606}
   - component: {fileID: 425997840598850607}
+  - component: {fileID: 425997840598850608}
   m_Layer: 0
-  m_Name: Floor_Grass_Bright
+  m_Name: GroundObject
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4623,6 +4624,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9900001, y: 0.30422172, z: 0.9900001}
   m_Center: {x: 0, y: 0.15211083, z: 0.00000023841858}
+--- !u!114 &425997840598850608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425997840596648686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2b20151a3cfd944aebfdbe5f3f2e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _miniMap: {fileID: 212919656}
 --- !u!33 &1630887546433373092
 MeshFilter:
   m_ObjectHideFlags: 0
