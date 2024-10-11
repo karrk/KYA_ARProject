@@ -16,7 +16,6 @@ public class JoyStick : MonoBehaviour
     private readonly float MaxDelta = 5f;
 
     private float _minDistRate = 0.2f;
-    //public Action<Vector2,float> OnInputed;
 
     private PlayerController _playedCharacter => Manager.Instance.Data.Player;
 

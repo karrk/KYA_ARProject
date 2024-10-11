@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Rigidbody _rb;
-    private Transform _cam;
+    [SerializeField] private Transform _targetcam;
 
     private Vector3 _camForward;
     private Vector3 _camRight;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _cam = Camera.main.transform;
+        _targetcam = Camera.main.transform.GetChild(0).transform;
         Manager.Instance.Data.SetPlayer(this);
         _anim = GetComponent<Animator>();
         _moveAnimHash = Animator.StringToHash("MoveSpeed");
@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public void Move(Vector2 m_dir,float m_rate)
     {
-        _camForward = _cam.forward;
-        _camRight = _cam.right;
+        _camForward = _targetcam.forward;
+        _camRight = _targetcam.right;
 
         _camForward.y = 0;
         _camRight.y = 0;
