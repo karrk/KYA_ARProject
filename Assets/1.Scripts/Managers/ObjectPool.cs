@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPool
 {
     private GameObject _prefab;
-    private int _objectCount = 5;
+    private int _objectCount = 10;
 
     private List<GameObject> _list = new List<GameObject>();
     private Transform _directory;
@@ -71,9 +71,18 @@ public class ObjectPool
         }
     }
 
+    public GameObject GetObject(Transform m_parent)
+    {
+        GameObject obj = GetObject();
+        obj.transform.SetParent(m_parent);
+
+        return obj;
+    }
+
     public void ReturnObj(GameObject m_obj)
     {
         m_obj.SetActive(false);
+        m_obj.transform.SetParent(_directory);
         _list.Add(m_obj);
     }
 }
