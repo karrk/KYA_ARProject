@@ -21,6 +21,11 @@ public class ObjectPoolManager
         return _poolTable[m_type].GetObject();
     }
 
+    public GameObject GetObject(E_PoolType m_type,Transform m_parent)
+    {
+        return _poolTable[m_type].GetObject(m_parent);
+    }
+
     public void ReturnObj(E_PoolType m_type,GameObject m_obj)
     {
         _poolTable[m_type].ReturnObj(m_obj);
