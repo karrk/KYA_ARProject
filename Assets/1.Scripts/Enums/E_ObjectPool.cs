@@ -14,4 +14,7 @@ public enum E_PoolType
     VFX_exp2,
     VFX_exp3,
     VFX_Exp_Size,
+
+    UI_Warning,
+    UI_Size,
 }
