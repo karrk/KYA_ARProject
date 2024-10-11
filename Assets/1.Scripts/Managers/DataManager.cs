@@ -11,6 +11,8 @@ public class DataManager
 
     public Vector3[] GroundPoese = new Vector3[(int)E_GroundPos.Size];
 
+    public Vector3 GroundViewpoint = new Vector3();
+
     [SerializeField] private PlayerController _player;
     public PlayerController Player => _player;
 
