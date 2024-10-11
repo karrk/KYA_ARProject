@@ -68,9 +68,8 @@ public class WarningController : MonoBehaviour
             return;
 
         _timer += Time.deltaTime;
-        _rate = _timer / _arriveTime;
+        _rate = _timer / _arriveTime - 0.05f;
 
-        //_filler.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, _rate);
         _fillRt.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, _rate);
 
         IconCamFollow();
