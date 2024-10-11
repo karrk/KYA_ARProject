@@ -57,6 +57,7 @@ public class UIManager
     {
         _BtnContainer.SetActive(false);
         Manager.Instance.Data.SetPlayMode(true);
+
         // 캐릭터 스폰
     }
 
