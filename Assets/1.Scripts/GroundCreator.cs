@@ -41,7 +41,10 @@ public class GroundCreator : MonoBehaviour
             _aim.transform.position = _ground.transform.position;
         });
 
-        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._GameStartBtn, RegistGroundPoses);
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._GameStartBtn, () => {
+            RegistGroundPoses();
+            WarningController.SetStandardDir(transform.forward);
+        });
     }
 
     private void RegistGroundPoses()
@@ -54,8 +57,8 @@ public class GroundCreator : MonoBehaviour
 
     private void InitGround()
     {
-        _ground.transform.localScale = Vector3.one * Manager.Instance.Data.GroundSize;
-        _aim.transform.localScale = Vector3.one * Manager.Instance.Data.GroundSize * 0.1f;
+        _ground.transform.localScale *= DataManager.ObjectScaleRate;
+        _aim.transform.localScale *= DataManager.ObjectScaleRate;
 
         _ground.SetActive(false);
         _aim.SetActive(true);

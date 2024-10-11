@@ -13,6 +13,8 @@ public class VFXController : MonoBehaviour
         _fx = GetComponent<ParticleSystem>();
         ParticleSystem.MainModule main = _fx.main;
         main.stopAction = ParticleSystemStopAction.Callback;
+
+        transform.localScale *= DataManager.ObjectScaleRate;
     }
 
     private void OnParticleSystemStopped()

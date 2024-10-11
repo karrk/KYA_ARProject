@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         Manager.Instance.Data.SetPlayer(this);
         _anim = GetComponent<Animator>();
         _moveAnimHash = Animator.StringToHash("MoveSpeed");
+        transform.localScale *= DataManager.ObjectScaleRate;
     }
 
     public void Move(Vector2 m_dir,float m_rate)

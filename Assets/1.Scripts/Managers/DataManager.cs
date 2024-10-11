@@ -5,7 +5,7 @@ public class DataManager
 {
     [SerializeField] private Transform PlayerSpawnPos;
 
-    public float GroundSize = 0.3f;
+    public const float ObjectScaleRate = 0.3f;
 
     public Vector3 GroundPos;
 
@@ -13,6 +13,9 @@ public class DataManager
 
     [SerializeField] private PlayerController _player;
     public PlayerController Player => _player;
+
+    [SerializeField] private Transform _warningCanvas;
+    public Transform WarningCanvas => _warningCanvas;
 
     private bool _playMode;
     public bool PlayMode => _playMode;

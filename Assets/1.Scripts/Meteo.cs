@@ -10,8 +10,8 @@ public class Meteo : MonoBehaviour
     private float _rotateAngle;
     private const float MinRotSpeed = 10f;
     private const float MaxRotSpeed = 30f;
-    private const float MinMoveSpeed = 1f;
-    private const float MaxMoveSpeed = 2f;
+    private const float MinMoveSpeed = 3f;
+    private const float MaxMoveSpeed = 6f;
 
     private Coroutine _moveRoutine;
 
@@ -23,11 +23,12 @@ public class Meteo : MonoBehaviour
     private Vector3 _targetPos;
 
     private ReturnObject _ret;
+    private WarningController _myWarning;
 
     private void Awake()
     {
-        _ret = transform.AddComponent<ReturnObject>();
         _modelTr = transform.GetChild(0);
+        transform.localScale *= DataManager.ObjectScaleRate;
     }
 
     private void OnEnable()
@@ -35,14 +36,23 @@ public class Meteo : MonoBehaviour
         _rot = new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
         _rotateAngle = Random.Range(MinRotSpeed, MaxRotSpeed);
         _moveSpeed = Random.Range(MinMoveSpeed, MaxMoveSpeed);
-
+        
         _moveRoutine = StartCoroutine(Move());
+    }
+
+    private void Start()
+    {
+        _ret = transform.GetComponent<ReturnObject>();
     }
 
     public void SetDestination(E_GroundPos m_pos) // 스포너지정
     {
         _targetPos = Manager.Instance.Data.GroundPoese[(int)m_pos];
         _arriveTime = CalculateArriveTime(_targetPos);
+        _myWarning = Manager.Instance.Pool.GetObject(E_PoolType.UI_Warning,
+            Manager.Instance.Data.WarningCanvas).GetComponent<WarningController>();
+        _myWarning.SetPos(m_pos);
+        _myWarning.SetArriveTime(_arriveTime);
 
         transform.LookAt(_targetPos);
     }
@@ -95,6 +105,8 @@ public class Meteo : MonoBehaviour
         {
             // 죽음.
         }
+
+        _myWarning.Stop();
 
         Manager.Instance.VFX.PlayFX(E_PoolType.VFX_exp0, this.transform.position);
 
