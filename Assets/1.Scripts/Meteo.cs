@@ -10,8 +10,8 @@ public class Meteo : MonoBehaviour
     private float _rotateAngle;
     private const float MinRotSpeed = 10f;
     private const float MaxRotSpeed = 30f;
-    private const float MinMoveSpeed = 3f;
-    private const float MaxMoveSpeed = 6f;
+    private const float MinMoveSpeed = 25f;
+    private const float MaxMoveSpeed = 45f;
 
     private Coroutine _moveRoutine;
 
@@ -40,7 +40,7 @@ public class Meteo : MonoBehaviour
     {
         _rot = new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
         _rotateAngle = Random.Range(MinRotSpeed, MaxRotSpeed);
-        _moveSpeed = Random.Range(MinMoveSpeed, MaxMoveSpeed);
+        _moveSpeed = Random.Range(MinMoveSpeed, MaxMoveSpeed) * DataManager.ObjectScaleRate;
     }
 
     private void Start()

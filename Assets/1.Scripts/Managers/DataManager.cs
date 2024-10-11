@@ -5,7 +5,7 @@ public class DataManager
 {
     [SerializeField] private Transform PlayerSpawnPos;
 
-    public const float ObjectScaleRate = 0.3f;
+    public const float ObjectScaleRate = 0.01f;
 
     public Vector3 GroundPos;
 
