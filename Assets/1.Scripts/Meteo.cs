@@ -25,9 +25,14 @@ public class Meteo : MonoBehaviour
     private ReturnObject _ret;
     private WarningController _myWarning;
 
+    private SphereCollider _collider;
+    private GameObject _subFxObject;
+
     private void Awake()
     {
+        _collider = GetComponent<SphereCollider>();
         _modelTr = transform.GetChild(0);
+        _subFxObject = transform.GetChild(1).gameObject;
         transform.localScale *= DataManager.ObjectScaleRate;
     }
 
@@ -36,8 +41,6 @@ public class Meteo : MonoBehaviour
         _rot = new Vector3(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
         _rotateAngle = Random.Range(MinRotSpeed, MaxRotSpeed);
         _moveSpeed = Random.Range(MinMoveSpeed, MaxMoveSpeed);
-        
-        _moveRoutine = StartCoroutine(Move());
     }
 
     private void Start()
@@ -45,7 +48,7 @@ public class Meteo : MonoBehaviour
         _ret = transform.GetComponent<ReturnObject>();
     }
 
-    public void SetDestination(E_GroundPos m_pos) // 스포너지정
+    public void SetDestination(E_GroundPos m_pos)
     {
         _targetPos = Manager.Instance.Data.GroundPoese[(int)m_pos];
         _arriveTime = CalculateArriveTime(_targetPos);
@@ -57,9 +60,16 @@ public class Meteo : MonoBehaviour
         transform.LookAt(_targetPos);
     }
 
+    public void Shoot()
+    {
+        _moveRoutine = StartCoroutine(Move());
+        _subFxObject.SetActive(true);
+    }
+
     private float CalculateArriveTime(Vector3 m_destination)
     {
         float dist = Vector3.Distance(transform.position, m_destination);
+        dist -= _collider.radius;
 
         return dist / _moveSpeed;
     }
@@ -111,6 +121,7 @@ public class Meteo : MonoBehaviour
         Manager.Instance.VFX.PlayFX(E_PoolType.VFX_exp0, this.transform.position);
 
         StopCoroutine(_moveRoutine);
+        _subFxObject.SetActive(false);
 
         Manager.Instance.Pool.ReturnObj(_ret.MyType, this.gameObject);
     }

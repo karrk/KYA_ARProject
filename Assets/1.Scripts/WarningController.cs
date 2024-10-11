@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class WarningController : MonoBehaviour
 {
     [SerializeField] private RectTransform _rt;
+    [SerializeField] private RectTransform _fillRt;
 
     [SerializeField] private Image _filler;
     [SerializeField] private Image _icon;
+
 
     private Vector3 _tempForward;
     private float _timer;
@@ -21,6 +23,11 @@ public class WarningController : MonoBehaviour
     private static Vector3 StandardDirection;
 
     private const float CellSpace = 0.32f;
+
+    private void Awake()
+    {
+        _fillRt = _filler.GetComponent<RectTransform>();
+    }
 
     public static void SetStandardDir(Vector3 m_dir)
     {
@@ -44,15 +51,15 @@ public class WarningController : MonoBehaviour
 
     public void SetArriveTime(float m_float)
     {
+        _timer = 0;
         this._arriveTime = m_float;
+        _fillRt.localScale = Vector3.zero;
     }
 
     private void OnEnable()
     {
         transform.up = StandardDirection;
         _isStoped = false;
-        _timer = 0;
-
     }
 
     private void Update()
@@ -63,10 +70,10 @@ public class WarningController : MonoBehaviour
         _timer += Time.deltaTime;
         _rate = _timer / _arriveTime;
 
-        _filler.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, _rate);
+        //_filler.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, _rate);
+        _fillRt.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, _rate);
 
-        _tempForward = Camera.main.transform.forward.z * Vector3.forward;
-        _icon.transform.up = _tempForward;
+        IconCamFollow();
     }
 
     public void Stop()
@@ -76,6 +83,12 @@ public class WarningController : MonoBehaviour
 
         _isStoped = true;
         Manager.Instance.Pool.ReturnObj(_ret.MyType, this.gameObject);
+    }
+
+    private void IconCamFollow()
+    {
+        _tempForward = Camera.main.transform.forward.z * Vector3.forward;
+        _icon.transform.up = _tempForward;
     }
 
 

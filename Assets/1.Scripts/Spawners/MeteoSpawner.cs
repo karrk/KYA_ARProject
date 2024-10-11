@@ -37,8 +37,8 @@ public class MeteoSpawner : MonoBehaviour
         E_PoolType rand = (E_PoolType)Random.Range((int)E_PoolType.Rock0, (int)E_PoolType.Rock_Size);
 
         Meteo meteo = Manager.Instance.Pool.GetObject(rand).GetComponent<Meteo>();
-        meteo.SetDestination((E_GroundPos)Random.Range(0, (int)E_GroundPos.Size));
-
         meteo.transform.position = GetRandomSpawnPos();
+        meteo.SetDestination((E_GroundPos)Random.Range(0, (int)E_GroundPos.Size));
+        meteo.Shoot();
     }
 }
