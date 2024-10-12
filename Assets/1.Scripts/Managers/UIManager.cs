@@ -13,6 +13,7 @@ public class UIManager
     [SerializeField] public Button _GameStartBtn;
     [SerializeField] public Button _SetHeightBtn;
     [SerializeField] public Button _SetRotationBtn;
+    [SerializeField] public Button _SetCullHeightBtn;
 
     public void AddBtnEvnet(Button m_btn,UnityAction m_action)
     {
@@ -32,6 +33,7 @@ public class UIManager
         AddBtnEvnet(_GameStartBtn, GameStartBtnAction);
         AddBtnEvnet(_SetHeightBtn, SetHeightBtnAction);
         AddBtnEvnet(_SetRotationBtn, SetRotationBtnAction);
+        AddBtnEvnet(_SetCullHeightBtn, SetCullHeightBtnAction);
 
         _setGroundBtn.gameObject.SetActive(true);
     }
@@ -77,6 +79,12 @@ public class UIManager
     {
         _BtnContainer.SetActive(true);
         _AcceptBtn.gameObject.SetActive(false);
+    }
+
+    private void SetCullHeightBtnAction()
+    {
+        _BtnContainer.SetActive(false);
+        _AcceptBtn.gameObject.SetActive(true);
     }
 
 

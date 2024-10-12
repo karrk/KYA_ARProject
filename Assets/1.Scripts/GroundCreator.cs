@@ -11,12 +11,14 @@ public class GroundCreator : MonoBehaviour
     [SerializeField] private bool _fixedPos;
     [SerializeField] private bool _setHeightMode;
     [SerializeField] private bool _setRotationMode;
+    [SerializeField] private bool _setCullHegihtMode;
     [SerializeField] private LayerMask _planeLayerMask;
 
     [SerializeField] private ARSession _arSession;
     [SerializeField] private ARPlaneManager _arPlaner;
 
     [SerializeField] private Transform _areas;
+    [SerializeField] private Transform _cullFace;
 
     private Ray _ray;
     private RaycastHit _hit;
@@ -35,9 +37,11 @@ public class GroundCreator : MonoBehaviour
         Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._ResetGroundBtn, ResetPos);
         Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._SetHeightBtn, SetHeight);
         Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._SetRotationBtn, SetRotation);
+        Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._SetCullHeightBtn, SetCullHeight);
         Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._AcceptBtn, () => {
             _setHeightMode = false;
             _setRotationMode = false;
+            _setCullHegihtMode = false;
             _aim.transform.position = _ground.transform.position;
         });
 
@@ -134,6 +138,17 @@ public class GroundCreator : MonoBehaviour
                 _ground.transform.rotation.y + delta,
                 _ground.transform.rotation.z));
         }
+        else if(_setCullHegihtMode)
+        {
+            _curXValue = Camera.main.transform.localEulerAngles.x;
+
+            float delta = _lastXValue - _curXValue;
+
+            _cullFace.transform.position =
+                new Vector3(_cullFace.transform.position.x,
+                _cullFace.transform.position.y + (delta * 0.001f),
+                _cullFace.transform.position.z);
+        }
     }
 
     private void RemoveDectectPlanes()
@@ -153,5 +168,12 @@ public class GroundCreator : MonoBehaviour
         _lastYValue = Camera.main.transform.localEulerAngles.y;
 
         _setRotationMode = true;
+    }
+
+    public void SetCullHeight()
+    {
+        _lastXValue = Camera.main.transform.localEulerAngles.x;
+
+        _setCullHegihtMode = true;
     }
 }
