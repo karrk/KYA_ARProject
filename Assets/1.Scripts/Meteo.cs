@@ -122,8 +122,11 @@ public class Meteo : MonoBehaviour
 
         int fxSelect = Random.Range((int)E_PoolType.VFX_exp0, (int)E_PoolType.VFX_Exp_Size);
 
-        Manager.Instance.VFX.PlayFX((E_PoolType)fxSelect, 
-            collision.GetContact(0).point + Vector3.up * _fxOffsetDist);
+        Vector3 contactPos = collision.GetContact(0).point + Vector3.up * _fxOffsetDist;
+
+        Manager.Instance.VFX.PlayFX((E_PoolType)fxSelect,contactPos);
+
+        Manager.Instance.VFX.PlayFX(E_PoolType.VFX_Frag1, contactPos);
 
         StopCoroutine(_moveRoutine);
         _subFxObject.SetActive(false);

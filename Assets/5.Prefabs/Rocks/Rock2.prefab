@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1096711210644601804}
   - component: {fileID: 1096711210625257112}
   - component: {fileID: 1096711210625158088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 1096711210644637684}
   - component: {fileID: 1096711210625184528}
   - component: {fileID: 1096711210627194546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9517,7 +9517,7 @@ GameObject:
   - component: {fileID: 1096711210625139186}
   - component: {fileID: 1096711210634234426}
   - component: {fileID: 751383009476524976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToonFireTorchRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14362,7 +14362,7 @@ GameObject:
   - component: {fileID: 4370456780766987187}
   - component: {fileID: 4370456780752913891}
   - component: {fileID: 4370456780752881181}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeWhiteSoftTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19115,7 +19115,7 @@ GameObject:
   - component: {fileID: -1198925278359914638}
   - component: {fileID: 7904831396049044422}
   - component: {fileID: 8874443970768005884}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19189,7 +19189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5177301037494736686}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19224,7 +19224,7 @@ GameObject:
   - component: {fileID: 7219654919012581816}
   - component: {fileID: 7219654919011287448}
   - component: {fileID: 7219654919010157400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 131425831261629423}
   - component: {fileID: 131425831275847355}
   - component: {fileID: 131425831275748331}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 131425831261673431}
   - component: {fileID: 131425831275766579}
   - component: {fileID: 131425831277776529}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9517,7 +9517,7 @@ GameObject:
   - component: {fileID: 131425831275729361}
   - component: {fileID: 131425831251270169}
   - component: {fileID: 326463471906237331}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToonFireTorchRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14360,7 +14360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3949398128703654421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14395,7 +14395,7 @@ GameObject:
   - component: {fileID: 3403232445455032454}
   - component: {fileID: 3403232445453705382}
   - component: {fileID: 3403232445452739174}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14478,7 +14478,7 @@ GameObject:
   - component: {fileID: 4914884175948939216}
   - component: {fileID: 4914884175933618560}
   - component: {fileID: 4914884175933651582}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmokeWhiteSoftTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19231,7 +19231,7 @@ GameObject:
   - component: {fileID: -2675810346279242507}
   - component: {fileID: 2816720245653652972}
   - component: {fileID: 7676980856405814437}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
