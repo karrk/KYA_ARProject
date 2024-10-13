@@ -28,12 +28,15 @@ public class Meteo : MonoBehaviour
     private SphereCollider _collider;
     private GameObject _subFxObject;
 
+    private float _fxOffsetDist = 2f;
+
     private void Awake()
     {
         _collider = GetComponent<SphereCollider>();
         _modelTr = transform.GetChild(0);
         _subFxObject = transform.GetChild(1).gameObject;
         transform.localScale *= DataManager.ObjectScaleRate;
+        _fxOffsetDist *= DataManager.ObjectScaleRate;
     }
 
     private void OnEnable()
@@ -117,7 +120,10 @@ public class Meteo : MonoBehaviour
 
         _myWarning.Stop();
 
-        Manager.Instance.VFX.PlayFX(E_PoolType.VFX_exp0, this.transform.position);
+        int fxSelect = Random.Range((int)E_PoolType.VFX_exp0, (int)E_PoolType.VFX_Exp_Size);
+
+        Manager.Instance.VFX.PlayFX((E_PoolType)fxSelect, 
+            collision.GetContact(0).point + Vector3.up * _fxOffsetDist);
 
         StopCoroutine(_moveRoutine);
         _subFxObject.SetActive(false);

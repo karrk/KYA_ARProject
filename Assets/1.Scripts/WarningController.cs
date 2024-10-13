@@ -32,7 +32,6 @@ public class WarningController : MonoBehaviour
     public static void SetStandardDir(Vector3 m_dir)
     {
         StandardDirection = m_dir;
-        //StandardDirection.x = 0;
         StandardDirection.y = 0;
     }
 
