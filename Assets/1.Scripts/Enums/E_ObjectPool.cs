@@ -18,6 +18,4 @@ public enum E_PoolType
 
     UI_Warning,
     UI_Size,
-
-    
 }
