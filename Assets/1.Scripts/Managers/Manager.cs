@@ -17,6 +17,7 @@ public class Manager : MonoBehaviour
 
         UI.Init();
         Pool.Init();
+        SFX.Init();
     }
 
     [SerializeField] private DataManager _data = null;
@@ -64,6 +65,18 @@ public class Manager : MonoBehaviour
                 _pool = new ObjectPoolManager();
 
             return _pool;
+        }
+    }
+
+    [SerializeField] private SFXManager _sfx = null;
+    public SFXManager SFX
+    {
+        get
+        {
+            if (_sfx == null)
+                _sfx = new SFXManager();
+
+            return _sfx;
         }
     }
 
