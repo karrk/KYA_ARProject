@@ -20,7 +20,7 @@ public class WarningController : MonoBehaviour
     private bool _isStoped;
     private ReturnObject _ret;
 
-    private static Vector3 StandardDirection;
+    private static Vector3 StandardDirection; // ground forward
 
     private const float CellSpace = 0.32f;
 
@@ -32,7 +32,7 @@ public class WarningController : MonoBehaviour
     public static void SetStandardDir(Vector3 m_dir)
     {
         StandardDirection = m_dir;
-        StandardDirection.x = 0;
+        //StandardDirection.x = 0;
         StandardDirection.y = 0;
     }
 
@@ -59,6 +59,7 @@ public class WarningController : MonoBehaviour
     private void OnEnable()
     {
         transform.up = StandardDirection;
+        transform.eulerAngles = new Vector3(90f, transform.eulerAngles.y, transform.eulerAngles.z);
         _isStoped = false;
     }
 
@@ -86,8 +87,10 @@ public class WarningController : MonoBehaviour
 
     private void IconCamFollow()
     {
-        _tempForward = Camera.main.transform.forward.z * Vector3.forward;
-        _icon.transform.up = _tempForward;
+        _icon.transform.LookAt(Camera.main.transform.position);
+
+        _icon.transform.eulerAngles = new Vector3(
+            -90f, _icon.transform.eulerAngles.y, _icon.transform.eulerAngles.z);
     }
 
 

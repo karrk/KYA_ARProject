@@ -47,7 +47,7 @@ public class GroundCreator : MonoBehaviour
 
         Manager.Instance.UI.AddBtnEvnet(Manager.Instance.UI._GameStartBtn, () => {
             RegistGroundPoses();
-            WarningController.SetStandardDir(transform.forward);
+            WarningController.SetStandardDir(_ground.transform.forward.normalized);
         });
     }
 
@@ -135,7 +135,7 @@ public class GroundCreator : MonoBehaviour
 
             _ground.transform.localRotation = Quaternion.Euler(new Vector3(
                 _ground.transform.rotation.x,
-                _ground.transform.rotation.y + delta,
+                _ground.transform.rotation.y + delta * 1.5f,
                 _ground.transform.rotation.z));
         }
         else if(_setCullHegihtMode)
