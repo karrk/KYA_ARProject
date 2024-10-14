@@ -17,6 +17,7 @@ public class Manager : MonoBehaviour
 
         UI.Init();
         Pool.Init();
+        SFX.Init();
     }
 
     [SerializeField] private DataManager _data = null;
@@ -83,6 +84,7 @@ public class Manager : MonoBehaviour
 
     private float _meteoSpawnDelay = 3f;
     private float _timer;
+    public Coroutine BGMRoutine;
 
     private void Update()
     {
@@ -98,8 +100,4 @@ public class Manager : MonoBehaviour
         }    
     }
 
-    public void EndGame()
-    {
-
-    }
 }

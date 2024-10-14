@@ -4882,7 +4882,7 @@ GameObject:
   - component: {fileID: -1038258221342909558}
   m_Layer: 10
   m_Name: Rock1
-  m_TagString: Untagged
+  m_TagString: Meteo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

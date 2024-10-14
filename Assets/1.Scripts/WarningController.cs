@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,6 @@ public class WarningController : MonoBehaviour
 
     [SerializeField] private Image _filler;
     [SerializeField] private Image _icon;
-
 
     private Vector3 _tempForward;
     private float _timer;
@@ -23,6 +23,13 @@ public class WarningController : MonoBehaviour
     private static Vector3 StandardDirection; // ground forward
 
     private const float CellSpace = 0.32f;
+
+    private RaycastHit[] _hitInfo;
+
+    public Vector2 BoxSize => _boxSize;
+    private Vector3 _boxSize = new Vector3(0.075f, 0.001f,0.075f);
+
+    [SerializeField] private LayerMask _targetLayer;
 
     private void Awake()
     {
@@ -46,6 +53,10 @@ public class WarningController : MonoBehaviour
 
         _rt.localPosition = pos;
         _rt.localScale = Vector3.one;
+    }
+    public RaycastHit[] GetHitInfos()
+    {
+        return Physics.BoxCastAll(this.transform.position, _boxSize/2, Vector3.back, Quaternion.identity, _targetLayer);
     }
 
     public void SetArriveTime(float m_float)
@@ -91,6 +102,4 @@ public class WarningController : MonoBehaviour
         _icon.transform.eulerAngles = new Vector3(
             -90f, _icon.transform.eulerAngles.y, _icon.transform.eulerAngles.z);
     }
-
-
 }

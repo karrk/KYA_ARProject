@@ -34,7 +34,7 @@ public class MinimapCreator : MonoBehaviour
             _miniMap.SetActive(false);
         }
         // 보였다가 안보이면
-        else if (!inView && _wasVisible)
+        else if (!inView && _wasVisible && Manager.Instance.Data.PlayMode)
         {
             _miniMap.SetActive(true);
         }

@@ -95,6 +95,9 @@ MonoBehaviour:
   _fillRt: {fileID: 0}
   _filler: {fileID: 1543199010608342684}
   _icon: {fileID: 1543199009820586786}
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &1543199009820586791
 GameObject:
   m_ObjectHideFlags: 0

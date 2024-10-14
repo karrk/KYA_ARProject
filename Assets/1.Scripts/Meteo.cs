@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -108,16 +109,10 @@ public class Meteo : MonoBehaviour
         _modelTr.eulerAngles = _rot;
     }
 
+    private RaycastHit[] _hits;
+
     private void OnCollisionEnter(Collision collision)
     {
-        // ¾îµðµç Á¢ÃËÇÏ¸é Æø¹ß
-        // ÀÌÆåÆ® ¹ß»ý
-
-        if(collision.collider.CompareTag("Player"))
-        {
-            // Á×À½.
-        }
-
         _myWarning.Stop();
 
         int vfxSelect = Random.Range((int)E_PoolType.VFX_exp0, (int)E_PoolType.VFX_Exp_Size);
@@ -133,6 +128,21 @@ public class Meteo : MonoBehaviour
 
         StopCoroutine(_moveRoutine);
         _subFxObject.SetActive(false);
+
+        if (collision.collider.CompareTag("Ground")
+             || collision.collider.CompareTag("Player"))
+        {
+            _hits = _myWarning.GetHitInfos();
+
+            for (int i = 0; i < _hits.Length; i++)
+            {
+                if (_hits[i].collider.TryGetComponent<PlayerController>(out PlayerController player))
+                {
+                    player.Dead(collision.GetContact(0).point);
+                }
+            }
+
+        }
 
         Manager.Instance.Pool.ReturnObj(_ret.MyType, this.gameObject);
     }
