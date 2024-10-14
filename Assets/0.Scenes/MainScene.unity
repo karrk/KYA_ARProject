@@ -983,6 +983,9 @@ MonoBehaviour:
       - {fileID: 7356780313640546697, guid: de3db4e70196dba47803fa14ccc2f5f6, type: 3}
       - {fileID: 1543199009210966245, guid: d910b47471d5cb847be66e8831a38dd4, type: 3}
       - {fileID: 1754395658773235406, guid: a0b8fd6fcb8a4604f9fe3db62975cac8, type: 3}
+  _sfx:
+    _fixedAudioClips: []
+    _moveableAudioClips: []
   _meteoSpawner: {fileID: 1678754340}
 --- !u!4 &224243048
 Transform:

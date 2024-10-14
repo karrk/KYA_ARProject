@@ -14,6 +14,7 @@ public class SFXManager
         GameObject source = new GameObject();
         source.name = "FixedSFX";
         source.transform.SetParent(Manager.Instance.transform);
+        _fixedSource = source.AddComponent<AudioSource>();
 
         Manager.Instance.UI.AddBtnEvnet(
             Manager.Instance.UI._GameStartBtn, SetCenterPos);
