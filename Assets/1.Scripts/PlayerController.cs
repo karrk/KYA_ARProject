@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float _completeStopDelay;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Transform _targetcam;
@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator _anim;
     private int _moveAnimHash;
+
+    private Coroutine _stopRoutine;
 
     private void Start()
     {
@@ -27,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
     public void Move(Vector2 m_dir,float m_rate)
     {
+        if (_stopRoutine != null)
+            StopCoroutine(_stopRoutine);
+
         _camForward = _targetcam.forward;
         _camRight = _targetcam.right;
 
@@ -45,7 +50,27 @@ public class PlayerController : MonoBehaviour
 
     public void StopMove()
     {
-        _anim.SetFloat(_moveAnimHash, 0);
+        _stopRoutine = StartCoroutine(SlowStopRoutine());
+    }
+
+    private IEnumerator SlowStopRoutine()
+    {
+        float speed = _rb.velocity.magnitude;
+        float timer = 0f;
+
+        while (true)
+        {
+            if (speed == 0)
+                break;
+
+            timer += Time.deltaTime;
+            speed = Mathf.Lerp(speed, 0, timer * _completeStopDelay);
+
+            _rb.velocity = _moveDir * speed;
+            _anim.SetFloat(_moveAnimHash, _rb.velocity.magnitude * 5);
+
+            yield return null;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -61,6 +86,9 @@ public class PlayerController : MonoBehaviour
         Manager.Instance.Data.SetPlayer(null);
         Manager.Instance.UI.ShowMain();
         Manager.Instance.Data.SetPlayMode(false);
+
+        if (_stopRoutine != null)
+            StopCoroutine(_stopRoutine);
 
         Destroy(this.gameObject);
     }

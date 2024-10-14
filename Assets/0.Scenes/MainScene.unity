@@ -496,7 +496,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.76
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1087,7 +1087,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 19d12dd47bdbb8f4dace60ed0665fe01, type: 3}
     - {fileID: 8300000, guid: 8f04b4347b729c746b9f3ccf15b24766, type: 3}
     _moveableAudioClips: []
-    _fixedSource: {fileID: 0}
+    _fixedSource: {fileID: 146618918}
   _meteoSpawner: {fileID: 1678754340}
 --- !u!4 &224243048
 Transform:

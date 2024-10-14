@@ -2188,6 +2188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5450f1a7b98f849b6e09b0594b5baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _completeStopDelay: 0.05
   _moveSpeed: 20
   _rb: {fileID: -242092961876116082}
   _targetcam: {fileID: 0}
