@@ -7,6 +7,8 @@ TagManager:
   - DeadZone
   - Missile
   - Ground
+  - Meteo
+  - EndZone
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - Ground
   - Fragment
   - Meteo
-  - 
-  - 
+  - RagDoll
+  - Player
   - 
   - 
   - 

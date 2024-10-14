@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -17,6 +18,13 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine _stopRoutine;
 
+    [SerializeField] private Transform _rigRoot;
+    [SerializeField] private Collider[] _colliders;
+
+    [SerializeField] private Collider _mainCollider;
+    private CharacterJoint[] _joints;
+    private Rigidbody[] _rbs;
+
     private void Start()
     {
         _targetcam = Camera.main.transform.GetChild(0).transform;
@@ -25,6 +33,20 @@ public class PlayerController : MonoBehaviour
         _moveAnimHash = Animator.StringToHash("MoveSpeed");
         transform.localScale *= DataManager.ObjectScaleRate;
         _moveSpeed *= DataManager.ObjectScaleRate;
+
+        _colliders = _rigRoot.GetComponentsInChildren<Collider>();
+        _joints = _rigRoot.GetComponentsInChildren<CharacterJoint>();
+        _rbs = _rigRoot.GetComponentsInChildren<Rigidbody>();
+
+        foreach (var rb in _rbs)
+        {
+            rb.isKinematic = true;
+        }
+
+        foreach (var coll in _colliders)
+        {
+            coll.enabled = false;
+        }
     }
 
     public void Move(Vector2 m_dir,float m_rate)
@@ -73,25 +95,60 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.CompareTag("DeadZone"))
-        {
-            Dead();
-        }
-    }
 
-    private void Dead()
+
+    public void Dead(Vector3 m_expPos = default)
     {
         Manager.Instance.Data.SetPlayer(null);
         Manager.Instance.UI.ShowMain();
         Manager.Instance.Data.SetPlayMode(false);
+        Manager.Instance.SFX.VolumeDown();
 
         if (_stopRoutine != null)
             StopCoroutine(_stopRoutine);
 
-        Destroy(this.gameObject);
+        TurnOnRagdoll(m_expPos);
+        
+
+        Destroy(this);
     }
 
+    [SerializeField] float _force;
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("DeadZone"))
+            Dead();
+    }
+
+    private void TurnOnRagdoll(Vector3 m_expPos = default)
+    {
+        _anim.enabled = false;
+        _mainCollider.enabled = false;
+        Destroy(_rb);
+
+        foreach (var joint in _joints)
+        {
+            joint.autoConfigureConnectedAnchor = true;
+            joint.enableProjection = true;
+        }
+
+        foreach (var coll in _colliders)
+        {
+            coll.enabled = true;
+        }
+
+        foreach (var rb in _rbs)
+        {
+            rb.isKinematic = false;
+
+            if(m_expPos != default)
+            {
+                Vector3 dir = (transform.position- m_expPos).normalized;
+                
+                //rb.AddForceAtPosition(dir * _force, m_expPos, ForceMode.Impulse);
+                rb.AddForce(dir * _force + Vector3.up * 0.01f, ForceMode.Impulse);
+            }
+        }
+    }
 }
