@@ -7,18 +7,16 @@ public class SFXManager
 {
     [SerializeField] private List<AudioClip> _fixedAudioClips;
     [SerializeField] private List<AudioClip> _moveableAudioClips;
-    private AudioSource _fixedSource;
+    [SerializeField] private AudioSource _fixedSource;
 
-    public void Init()
-    {
-        GameObject source = new GameObject();
-        source.name = "FixedSFX";
-        source.transform.SetParent(Manager.Instance.transform);
-        _fixedSource = source.AddComponent<AudioSource>();
-
-        Manager.Instance.UI.AddBtnEvnet(
-            Manager.Instance.UI._GameStartBtn, SetCenterPos);
-    }
+    //public void Init()
+    //{
+    //    GameObject source = new GameObject();
+    //    source.name = "FixedSFX";
+    //    source.transform.SetParent(Manager.Instance.transform);
+    //    _fixedSource = source.AddComponent<AudioSource>();
+    //    SetFixedSourceOptions();
+    //}
 
     public void PlayFX(E_SoundType m_fxType)
     {
@@ -39,8 +37,13 @@ public class SFXManager
         return _moveableAudioClips[(int)m_fxType];
     }
 
-    private void SetCenterPos()
-    {
-        _fixedSource.transform.position = Manager.Instance.Data.GroundPos;
-    }
+    //private void SetFixedSourceOptions()
+    //{
+    //    _fixedSource.playOnAwake = false;
+    //    _fixedSource.pitch = 0.8f;
+    //    _fixedSource.spatialBlend = 1f;
+    //    _fixedSource.rolloffMode = AudioRolloffMode.Linear;
+    //    _fixedSource.minDistance = 0f;
+    //    _fixedSource.maxDistance = 10f;
+    //}
 }

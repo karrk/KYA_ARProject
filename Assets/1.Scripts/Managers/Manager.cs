@@ -17,7 +17,6 @@ public class Manager : MonoBehaviour
 
         UI.Init();
         Pool.Init();
-        SFX.Init();
     }
 
     [SerializeField] private DataManager _data = null;
